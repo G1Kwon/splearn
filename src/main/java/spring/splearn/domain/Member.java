@@ -8,7 +8,7 @@ import lombok.Getter;
 @Getter
 public class Member {
 
-  private String email;
+  private Email email;
   private String nickname;
   private String passwordHash;
   private MemberStatus status;
@@ -22,7 +22,7 @@ public class Member {
   public static Member create(MemberCreateRequest createRequest, PasswordEncoder passwordEncoder) {
     Member member = new Member();
 
-    member.email = Objects.requireNonNull(createRequest.email());
+    member.email = new Email(Objects.requireNonNull(createRequest.email()));
     member.nickname = Objects.requireNonNull(createRequest.nickname());
     member.passwordHash = Objects.requireNonNull(
         passwordEncoder.encode(createRequest.passwordHash()));
