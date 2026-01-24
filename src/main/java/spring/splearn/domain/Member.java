@@ -21,6 +21,11 @@ public class Member {
     this.status = MemberStatus.PENDING;
   }
 
+  public static Member create(String email, String nickname, String password,
+      PasswordEncoder passwordEncoder) {
+    return new Member(email, nickname, passwordEncoder.encode(password));
+  }
+
   public void activate() {
     state(status == MemberStatus.PENDING, "PENDING 상태가 아닙니다");
 
@@ -31,5 +36,17 @@ public class Member {
     state(status == MemberStatus.ACTIVE, "ACTIVE 상태가 아닙니다");
 
     this.status = MemberStatus.DEACTIVATED;
+  }
+
+  public boolean verifyPassword(String password, PasswordEncoder passwordEncoder) {
+    return passwordEncoder.matches(password, this.passwordHash);
+  }
+
+  public void changeNickName(String nickname) {
+    this.nickname = nickname;
+  }
+
+  public void changePassword(String password, PasswordEncoder passwordEncoder) {
+    this.passwordHash = passwordEncoder.encode(password);
   }
 }
