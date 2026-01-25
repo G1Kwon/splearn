@@ -2,20 +2,35 @@ package spring.splearn.domain;
 
 import static org.springframework.util.Assert.state;
 
+import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import java.util.Objects;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
+@Entity
 @Getter
+@ToString
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Member {
 
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
+
+  @Embedded
   private Email email;
   private String nickname;
   private String passwordHash;
+  @Enumerated(EnumType.STRING)
   private MemberStatus status;
-
-  private Member() {
-
-  }
 
   //생성자 대체하는 정적 팩토리 메서드
   //새로운 속성이 들어가도 파라미터 리스트가 길어지지 않는다.
