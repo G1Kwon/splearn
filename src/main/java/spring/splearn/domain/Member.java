@@ -19,7 +19,8 @@ public class Member {
 
   //생성자 대체하는 정적 팩토리 메서드
   //새로운 속성이 들어가도 파라미터 리스트가 길어지지 않는다.
-  public static Member create(MemberCreateRequest createRequest, PasswordEncoder passwordEncoder) {
+  public static Member register(MemberRegisterRequest createRequest,
+      PasswordEncoder passwordEncoder) {
     Member member = new Member();
 
     member.email = new Email(Objects.requireNonNull(createRequest.email()));
