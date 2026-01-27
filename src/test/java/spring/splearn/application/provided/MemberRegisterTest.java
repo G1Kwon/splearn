@@ -19,7 +19,7 @@ import spring.splearn.domain.MemberStatus;
 @SpringBootTest
 @Transactional
 @Import(SplearnTestConfiguration.class)
-public record MemberRegisterTest(MemberRegister memberRegister, EntityManager entityManager) {
+record MemberRegisterTest(MemberRegister memberRegister, EntityManager entityManager) {
 
   @Test
   void register() {
@@ -31,7 +31,7 @@ public record MemberRegisterTest(MemberRegister memberRegister, EntityManager en
 
   @Test
   void duplicateEmailFail() {
-    Member member = memberRegister.register(MemberFixture.createMemberRegisterRequest());
+    memberRegister.register(MemberFixture.createMemberRegisterRequest());
 
     assertThatThrownBy(() -> memberRegister.register(MemberFixture.createMemberRegisterRequest()))
         .isInstanceOf(DuplicateEmailException.class);
@@ -53,14 +53,16 @@ public record MemberRegisterTest(MemberRegister memberRegister, EntityManager en
 
   @Test
   void memberRegisterRequestFail() {
-    extracted(new MemberRegisterRequest("g1@splearn.app", "g1", "secret"));
-    extracted(new MemberRegisterRequest("g1@splearn.app", "Charlie_____________________________",
-        "longsecret"));
-    extracted(new MemberRegisterRequest("g1splearn.app", "g1__________________", "longsecret"));
+    checkValidation(new MemberRegisterRequest("g1@splearn.app", "g1", "secret"));
+    checkValidation(
+        new MemberRegisterRequest("g1@splearn.app", "Charlie_____________________________",
+            "longsecret"));
+    checkValidation(
+        new MemberRegisterRequest("g1splearn.app", "g1__________________", "longsecret"));
 
   }
 
-  private void extracted(MemberRegisterRequest invalid) {
+  private void checkValidation(MemberRegisterRequest invalid) {
     assertThatThrownBy(() -> memberRegister.register(invalid))
         .isInstanceOf(ConstraintViolationException.class);
   }
