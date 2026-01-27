@@ -65,24 +65,24 @@ class MemberTest {
 
   @Test
   void verifyPassword() {
-    assertThat(member.verifyPassword("secret", passwordEncoder)).isTrue();
+    assertThat(member.verifyPassword("verysecret", passwordEncoder)).isTrue();
     assertThat(member.verifyPassword("hello", passwordEncoder)).isFalse();
   }
 
   @Test
   void changeNickName() {
-    assertThat(member.getNickname()).isEqualTo("g1");
-
-    member.changeNickName("Charlie");
-
     assertThat(member.getNickname()).isEqualTo("Charlie");
+
+    member.changeNickName("Charlie1");
+
+    assertThat(member.getNickname()).isEqualTo("Charlie1");
   }
 
   @Test
   void changePassword() {
-    member.changePassword("verysecret", passwordEncoder);
+    member.changePassword("verysecret2", passwordEncoder);
 
-    assertThat(member.verifyPassword("verysecret", passwordEncoder)).isTrue();
+    assertThat(member.verifyPassword("verysecret2", passwordEncoder)).isTrue();
   }
 
   @Test

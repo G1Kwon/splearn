@@ -43,7 +43,7 @@ public class Member {
     member.email = new Email(Objects.requireNonNull(createRequest.email()));
     member.nickname = Objects.requireNonNull(createRequest.nickname());
     member.passwordHash = Objects.requireNonNull(
-        passwordEncoder.encode(createRequest.passwordHash()));
+        passwordEncoder.encode(createRequest.password()));
 
     member.status = MemberStatus.PENDING;
 
