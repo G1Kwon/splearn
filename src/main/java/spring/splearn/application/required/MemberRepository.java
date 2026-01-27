@@ -1,6 +1,8 @@
 package spring.splearn.application.required;
 
+import java.util.Optional;
 import org.springframework.data.repository.Repository;
+import spring.splearn.domain.Email;
 import spring.splearn.domain.Member;
 
 /**
@@ -9,5 +11,7 @@ import spring.splearn.domain.Member;
 public interface MemberRepository extends Repository<Member, Long> {
 
   Member save(Member member);
+
+  Optional<Member> findByEmail(Email email);
 
 }
