@@ -2,36 +2,35 @@ package spring.splearn.domain;
 
 import static org.springframework.util.Assert.state;
 
-import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import java.util.Objects;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.hibernate.annotations.NaturalId;
+import org.hibernate.annotations.NaturalIdCache;
 
 @Entity
+//xml 에서 설정 가능
+//@Table(name = "MEMBER", uniqueConstraints = {
+//    @UniqueConstraint(name = "UK_MEMBER_EMAIL_ADDRESS", columnNames = "email_address")
+//})
 @Getter
 @ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Member {
+@NaturalIdCache
+public class Member extends AbstractEntity {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
-
-  @Embedded
+  //  @Embedded
   @NaturalId
   private Email email;
+  //  @Column(length = 100, nullable = false)
   private String nickname;
+  //  @Column(length = 200, nullable = false)
   private String passwordHash;
-  @Enumerated(EnumType.STRING)
+  //  @Enumerated(EnumType.STRING)
+//  @Column(length = 50, nullable = false)
   private MemberStatus status;
 
   //생성자 대체하는 정적 팩토리 메서드
