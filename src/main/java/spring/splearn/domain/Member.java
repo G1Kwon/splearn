@@ -9,7 +9,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.hibernate.annotations.NaturalId;
-import org.hibernate.annotations.NaturalIdCache;
 
 @Entity
 //xml 에서 설정 가능
@@ -17,9 +16,9 @@ import org.hibernate.annotations.NaturalIdCache;
 //    @UniqueConstraint(name = "UK_MEMBER_EMAIL_ADDRESS", columnNames = "email_address")
 //})
 @Getter
-@ToString
+@ToString(callSuper = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@NaturalIdCache
+//@NaturalIdCache
 public class Member extends AbstractEntity {
 
   //  @Embedded
