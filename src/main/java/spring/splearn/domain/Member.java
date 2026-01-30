@@ -32,6 +32,8 @@ public class Member extends AbstractEntity {
 //  @Column(length = 50, nullable = false)
   private MemberStatus status;
 
+  private MemberDetail memberDetail;
+
   //생성자 대체하는 정적 팩토리 메서드
   //새로운 속성이 들어가도 파라미터 리스트가 길어지지 않는다.
   public static Member register(MemberRegisterRequest createRequest,
