@@ -9,10 +9,12 @@ import spring.splearn.application.member.provided.MemberRegister;
 import spring.splearn.application.member.required.EmailSender;
 import spring.splearn.application.member.required.MemberRepository;
 import spring.splearn.domain.member.DuplicateEmailException;
+import spring.splearn.domain.member.DuplicateProfileException;
 import spring.splearn.domain.member.Member;
 import spring.splearn.domain.member.MemberInfoUpdateRequest;
 import spring.splearn.domain.member.MemberRegisterRequest;
 import spring.splearn.domain.member.PasswordEncoder;
+import spring.splearn.domain.member.Profile;
 import spring.splearn.domain.shared.Email;
 
 @Service
@@ -65,9 +67,25 @@ public class MemberModifyService implements MemberRegister {
   public Member updateInfo(Long memberId, MemberInfoUpdateRequest memberInfoUpdateRequest) {
     Member member = memberFinder.find(memberId);
 
+    checkDuplicateProfile(member, memberInfoUpdateRequest.profileAddress());
+
     member.updateInfo(memberInfoUpdateRequest);
 
     return memberRepository.save(member);
+  }
+
+  private void checkDuplicateProfile(Member member, String profileAddress) {
+    if (profileAddress.isEmpty()) {
+      return;
+    }
+    Profile currentProfile = member.getDetail().getProfile();
+    if (currentProfile != null && currentProfile.address().equals(profileAddress)) {
+      return;
+    }
+
+    if (memberRepository.findByProfile(new Profile(profileAddress)).isPresent()) {
+      throw new DuplicateProfileException("이미 존재하는 프로필 주소입니다: " + profileAddress);
+    }
   }
 
   private void sendWelcomeEmail(Member member) {
