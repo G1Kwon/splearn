@@ -2,10 +2,7 @@ package spring.splearn.domain.member;
 
 import static org.springframework.util.Assert.state;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToOne;
 import java.util.Objects;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -37,7 +34,7 @@ public class Member extends AbstractEntity {
 //  @Column(length = 50, nullable = false)
   private MemberStatus status;
 
-  @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+  //  @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   private MemberDetail detail;
 
   //생성자 대체하는 정적 팩토리 메서드

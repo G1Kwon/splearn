@@ -10,6 +10,7 @@ import spring.splearn.application.member.required.EmailSender;
 import spring.splearn.application.member.required.MemberRepository;
 import spring.splearn.domain.member.DuplicateEmailException;
 import spring.splearn.domain.member.Member;
+import spring.splearn.domain.member.MemberInfoUpdateRequest;
 import spring.splearn.domain.member.MemberRegisterRequest;
 import spring.splearn.domain.member.PasswordEncoder;
 import spring.splearn.domain.shared.Email;
@@ -47,6 +48,24 @@ public class MemberModifyService implements MemberRegister {
     Member member = memberFinder.find(memberId);
 
     member.activate();
+
+    return memberRepository.save(member);
+  }
+
+  @Override
+  public Member deactivate(Long memberId) {
+    Member member = memberFinder.find(memberId);
+
+    member.deactivate();
+
+    return memberRepository.save(member);
+  }
+
+  @Override
+  public Member updateInfo(Long memberId, MemberInfoUpdateRequest memberInfoUpdateRequest) {
+    Member member = memberFinder.find(memberId);
+
+    member.updateInfo(memberInfoUpdateRequest);
 
     return memberRepository.save(member);
   }
