@@ -1,4 +1,4 @@
-package spring.splearn.domain;
+package spring.splearn.domain.shared;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

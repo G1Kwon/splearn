@@ -13,10 +13,10 @@
 //import spring.splearn.application.MemberService;
 //import spring.splearn.application.required.EmailSender;
 //import spring.splearn.application.required.MemberRepository;
-//import spring.splearn.domain.Email;
-//import spring.splearn.domain.Member;
-//import spring.splearn.domain.MemberFixture;
-//import spring.splearn.domain.MemberStatus;
+//import spring.splearn.domain.shared.Email;
+//import spring.splearn.domain.member.Member;
+//import spring.splearn.domain.member.MemberFixture;
+//import spring.splearn.domain.member.MemberStatus;
 //
 //class MemberRegisterManualTest {
 //

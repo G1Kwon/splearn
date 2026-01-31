@@ -9,8 +9,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 import spring.splearn.SplearnTestConfiguration;
-import spring.splearn.domain.Member;
-import spring.splearn.domain.MemberFixture;
+import spring.splearn.application.member.provided.MemberFinder;
+import spring.splearn.application.member.provided.MemberRegister;
+import spring.splearn.domain.member.Member;
+import spring.splearn.domain.member.MemberFixture;
 
 @SpringBootTest
 @Transactional
