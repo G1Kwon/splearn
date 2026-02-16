@@ -1,11 +1,11 @@
 package spring.splearn.domain;
 
+import jakarta.annotation.Nullable;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 import java.util.Objects;
-import javax.annotation.Nullable;
 import lombok.Getter;
 import org.hibernate.proxy.HibernateProxy;
 
