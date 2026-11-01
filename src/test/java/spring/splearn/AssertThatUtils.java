@@ -5,7 +5,7 @@ import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import java.util.function.Consumer;
 import org.assertj.core.api.AssertProvider;
 import org.springframework.test.json.JsonPathValueAssert;
-import spring.splearn.domain.member.MemberRegisterRequest;
+import spring.splearn.application.member.provided.MemberRegisterRequest;
 
 public class AssertThatUtils {
 

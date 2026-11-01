@@ -19,10 +19,10 @@ import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.transaction.annotation.Transactional;
 import spring.splearn.adapter.webapi.dto.MemberRegisterResponse;
 import spring.splearn.application.member.provided.MemberRegister;
+import spring.splearn.application.member.provided.MemberRegisterRequest;
 import spring.splearn.application.member.required.MemberRepository;
 import spring.splearn.domain.member.Member;
 import spring.splearn.domain.member.MemberFixture;
-import spring.splearn.domain.member.MemberRegisterRequest;
 import spring.splearn.domain.member.MemberStatus;
 
 @SpringBootTest

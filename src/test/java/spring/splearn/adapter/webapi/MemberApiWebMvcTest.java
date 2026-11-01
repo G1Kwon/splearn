@@ -15,9 +15,9 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.assertj.MockMvcTester;
 import spring.splearn.application.member.provided.MemberRegister;
+import spring.splearn.application.member.provided.MemberRegisterRequest;
 import spring.splearn.domain.member.Member;
 import spring.splearn.domain.member.MemberFixture;
-import spring.splearn.domain.member.MemberRegisterRequest;
 
 @WebMvcTest(MemberApi.class)
 @RequiredArgsConstructor

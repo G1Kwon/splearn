@@ -6,13 +6,13 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 import spring.splearn.application.member.provided.MemberFinder;
 import spring.splearn.application.member.provided.MemberRegister;
+import spring.splearn.application.member.provided.MemberRegisterRequest;
 import spring.splearn.application.member.required.EmailSender;
 import spring.splearn.application.member.required.MemberRepository;
 import spring.splearn.domain.member.DuplicateEmailException;
 import spring.splearn.domain.member.DuplicateProfileException;
 import spring.splearn.domain.member.Member;
 import spring.splearn.domain.member.MemberInfoUpdateRequest;
-import spring.splearn.domain.member.MemberRegisterRequest;
 import spring.splearn.domain.member.PasswordEncoder;
 import spring.splearn.domain.member.Profile;
 import spring.splearn.domain.shared.Email;
@@ -34,7 +34,7 @@ public class MemberModifyService implements MemberRegister {
     checkDuplicateEmail(registerRequest);
 
     // domain model
-    Member member = Member.register(registerRequest, passwordEncoder);
+    Member member = Member.register(registerRequest.toInfo(), passwordEncoder);
 
     //repository
     memberRepository.save(member);

@@ -40,14 +40,20 @@ public class Member extends AbstractEntity {
 
   //생성자 대체하는 정적 팩토리 메서드
   //새로운 속성이 들어가도 파라미터 리스트가 길어지지 않는다.
-  public static Member register(MemberRegisterRequest createRequest,
+  //리팩토링 전
+//  public static Member register(MemberRegisterRequest createRequest,
+//      PasswordEncoder passwordEncoder) {
+//    return register(createRequest.toInfo(), passwordEncoder);
+//  }
+
+  public static Member register(MemberRegisterInfo registerInfo,
       PasswordEncoder passwordEncoder) {
     Member member = new Member();
 
-    member.email = new Email(Objects.requireNonNull(createRequest.email()));
-    member.nickname = Objects.requireNonNull(createRequest.nickname());
+    member.email = new Email(Objects.requireNonNull(registerInfo.email()));
+    member.nickname = Objects.requireNonNull(registerInfo.nickname());
     member.passwordHash = Objects.requireNonNull(
-        passwordEncoder.encode(createRequest.password()));
+        passwordEncoder.encode(registerInfo.password()));
 
     member.status = MemberStatus.PENDING;
 

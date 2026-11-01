@@ -11,12 +11,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 import spring.splearn.SplearnTestConfiguration;
 import spring.splearn.application.member.provided.MemberRegister;
+import spring.splearn.application.member.provided.MemberRegisterRequest;
 import spring.splearn.domain.member.DuplicateEmailException;
 import spring.splearn.domain.member.DuplicateProfileException;
 import spring.splearn.domain.member.Member;
 import spring.splearn.domain.member.MemberFixture;
 import spring.splearn.domain.member.MemberInfoUpdateRequest;
-import spring.splearn.domain.member.MemberRegisterRequest;
 import spring.splearn.domain.member.MemberStatus;
 
 @SpringBootTest
