@@ -1,4 +1,4 @@
-package spring.splearn.application.provided;
+package spring.splearn.application.member.provided;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -9,8 +9,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 import spring.splearn.SplearnTestConfiguration;
-import spring.splearn.application.member.provided.MemberFinder;
-import spring.splearn.application.member.provided.MemberRegister;
 import spring.splearn.domain.member.Member;
 import spring.splearn.domain.member.MemberFixture;
 
