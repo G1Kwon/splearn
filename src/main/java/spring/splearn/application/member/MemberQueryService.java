@@ -1,16 +1,12 @@
 package spring.splearn.application.member;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.validation.annotation.Validated;
 import spring.splearn.application.member.provided.MemberFinder;
 import spring.splearn.application.member.required.MemberRepository;
 import spring.splearn.domain.member.Member;
+import spring.splearn.support.stereotype.ApplicationService;
 
-@Service
-@Transactional
-@Validated
+@ApplicationService
 @RequiredArgsConstructor
 public class MemberQueryService implements MemberFinder {
 

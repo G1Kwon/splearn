@@ -9,25 +9,21 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.UnsupportedEncodingException;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.assertj.MockMvcTester;
 import org.springframework.test.web.servlet.assertj.MvcTestResult;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
-import org.springframework.transaction.annotation.Transactional;
 import spring.splearn.adapter.webapi.dto.MemberRegisterResponse;
 import spring.splearn.application.member.provided.MemberRegister;
 import spring.splearn.application.member.provided.MemberRegisterRequest;
 import spring.splearn.application.member.required.MemberRepository;
+import spring.splearn.application.support.stereotype.WebApiAdapterTest;
 import spring.splearn.domain.member.Member;
 import spring.splearn.domain.member.MemberFixture;
 import spring.splearn.domain.member.MemberStatus;
 
-@SpringBootTest
-@AutoConfigureMockMvc
-@Transactional
+@WebApiAdapterTest
 @RequiredArgsConstructor
 class MemberApiTest {
 

@@ -1,9 +1,6 @@
 package spring.splearn.application.member;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.validation.annotation.Validated;
 import spring.splearn.application.member.provided.LoginFailedException;
 import spring.splearn.application.member.provided.MemberAuthenticater;
 import spring.splearn.application.member.provided.MemberLoginRequest;
@@ -11,10 +8,9 @@ import spring.splearn.application.member.required.MemberRepository;
 import spring.splearn.domain.member.Member;
 import spring.splearn.domain.member.PasswordEncoder;
 import spring.splearn.domain.shared.Email;
+import spring.splearn.support.stereotype.VAlidatedApplicationService;
 
-@Service
-@Transactional
-@Validated
+@VAlidatedApplicationService
 @RequiredArgsConstructor
 public class MemberAuthenticationService implements MemberAuthenticater {
 
@@ -31,7 +27,7 @@ public class MemberAuthenticationService implements MemberAuthenticater {
     if (!member.isActive()) {
       throw new LoginFailedException();
     }
-    
+
     if (!member.verifyPassword(loginRequest.password(), passwordEncoder)) {
       throw new LoginFailedException();
     }

@@ -1,9 +1,6 @@
 package spring.splearn.application.instructor;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.validation.annotation.Validated;
 import spring.splearn.application.instructor.provided.DuplicationInstructorApplicationException;
 import spring.splearn.application.instructor.provided.InstructorApplication;
 import spring.splearn.application.instructor.provided.InstructorApplyRequest;
@@ -12,10 +9,9 @@ import spring.splearn.application.instructor.required.InstructorRepository;
 import spring.splearn.application.member.provided.MemberFinder;
 import spring.splearn.domain.Instructor.Instructor;
 import spring.splearn.domain.member.Member;
+import spring.splearn.support.stereotype.VAlidatedApplicationService;
 
-@Service
-@Transactional
-@Validated
+@VAlidatedApplicationService
 @RequiredArgsConstructor
 public class InstructorModifyService implements InstructorApplication {
 

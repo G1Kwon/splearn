@@ -1,9 +1,6 @@
 package spring.splearn.application.member;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.validation.annotation.Validated;
 import spring.splearn.application.member.provided.MemberFinder;
 import spring.splearn.application.member.provided.MemberRegister;
 import spring.splearn.application.member.provided.MemberRegisterRequest;
@@ -16,10 +13,9 @@ import spring.splearn.domain.member.MemberInfoUpdateRequest;
 import spring.splearn.domain.member.PasswordEncoder;
 import spring.splearn.domain.member.Profile;
 import spring.splearn.domain.shared.Email;
+import spring.splearn.support.stereotype.VAlidatedApplicationService;
 
-@Service
-@Transactional
-@Validated
+@VAlidatedApplicationService
 @RequiredArgsConstructor
 public class MemberModifyService implements MemberRegister {
 

@@ -6,21 +6,19 @@ import static spring.splearn.domain.member.MemberFixture.createMemberRegisterReq
 import static spring.splearn.domain.member.MemberFixture.createPasswordEncoder;
 
 import jakarta.persistence.EntityManager;
+import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.dao.DataIntegrityViolationException;
 import spring.splearn.domain.member.Member;
 import spring.splearn.domain.member.MemberStatus;
 
 @DataJpaTest
+@RequiredArgsConstructor
 class MemberRepositoryTest {
 
-  @Autowired
-  MemberRepository memberRepository;
-
-  @Autowired
-  EntityManager entityManager;
+  final MemberRepository memberRepository;
+  final EntityManager entityManager;
 
   @Test
   void createMember() {

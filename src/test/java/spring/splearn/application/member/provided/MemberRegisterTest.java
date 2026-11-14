@@ -4,12 +4,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import jakarta.persistence.EntityManager;
-import jakarta.transaction.Transactional;
 import jakarta.validation.ConstraintViolationException;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Import;
-import spring.splearn.SplearnTestConfiguration;
+import spring.splearn.application.support.stereotype.ApplicationServiceTest;
 import spring.splearn.domain.member.DuplicateEmailException;
 import spring.splearn.domain.member.DuplicateProfileException;
 import spring.splearn.domain.member.Member;
@@ -17,9 +14,7 @@ import spring.splearn.domain.member.MemberFixture;
 import spring.splearn.domain.member.MemberInfoUpdateRequest;
 import spring.splearn.domain.member.MemberStatus;
 
-@SpringBootTest
-@Transactional
-@Import(SplearnTestConfiguration.class)
+@ApplicationServiceTest
 record MemberRegisterTest(MemberRegister memberRegister, EntityManager entityManager) {
 
   @Test
