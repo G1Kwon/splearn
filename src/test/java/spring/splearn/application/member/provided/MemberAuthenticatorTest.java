@@ -1,5 +1,7 @@
 package spring.splearn.application.member.provided;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,12 +25,15 @@ class MemberAuthenticatorTest {
   @Test
   void login() {
     var registerRequest = MemberFixture.createMemberRegisterRequest();
-    memberRegister.register(registerRequest).activate();
+    var member = memberRegister.register(registerRequest);
+    member.activate();
 
-    var member = memberAuthenticater.login(new MemberLoginRequest(
+    var loggedInMember = memberAuthenticater.login(new MemberLoginRequest(
         registerRequest.email(),
         registerRequest.password()
     ));
+
+    assertThat(loggedInMember.getId()).isEqualTo(member.getId());
   }
 
   @Test

@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
+import spring.splearn.application.instructor.provided.DuplicationInstructorApplicationException;
 import spring.splearn.application.instructor.provided.InstructorApplication;
 import spring.splearn.application.instructor.provided.InstructorApplyRequest;
 import spring.splearn.application.instructor.provided.InstructorFinder;
@@ -27,11 +28,19 @@ public class InstructorModifyService implements InstructorApplication {
     // member 를 찾아오고
     Member member = memberFinder.find(applyRequest.memberId());
 
+    checkDuplicateApplication(member);
+
     // instructor 만들고
     Instructor instructor = Instructor.apply(member);
 
     // instructor 저잘
     return instructorRepository.save(instructor);
+  }
+
+  private void checkDuplicateApplication(Member member) {
+    if (instructorRepository.findByMemberId(member.getId()).isPresent()) {
+      throw new DuplicationInstructorApplicationException("회원은 중복해서 강사 신청을 할 수 없습니다.");
+    }
   }
 
   @Override
